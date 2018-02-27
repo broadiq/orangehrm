@@ -29,6 +29,9 @@ RUN wget -c http://downloads.sourceforge.net/project/orangehrm/stable/3.3.2/oran
 # Fix Permission
 RUN cd /var/www/site/orangehrm-3.3.2; bash fix_permissions.sh
 
+# Set the configuration file with the correct environment settings
+ADD docker-build-files/Conf.php /var/www/site/orangehrm-3.3.2/lib/confs
+
 # Update the default apache site with the config we created.
 ADD docker-build-files/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
