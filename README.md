@@ -27,7 +27,11 @@ $docker run -td --name='orangehrm' \
     --rm -p 9222:80 \
     broadiq/orangehrm
 ```
+### Fresh Install
+Once docker or Kubernetes has finished installing the image, navigate to the URL and follow the installation wizard.  This will install and create a new OrangeHRM database in MySQL and create initial admin credentials.
 
+### Redeploy the Application
+Once docker or Kubernetes has finished installing the image, navigate to the URL and click on the upgrade link.  Select version 3.2 from the drop down and click procede.  Then follow the remaining upgrade wizard links.
 
 ## Issues
 
