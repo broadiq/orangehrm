@@ -43,3 +43,5 @@ After the application is running and there are messages with "An internal error 
 ```
 mysql > SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 ```
+
+After running the command you many need to restart the application or re-install the application.
