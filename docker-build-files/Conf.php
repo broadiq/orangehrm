@@ -10,15 +10,15 @@ class Conf {
 
         function Conf() {
 
-                $this->dbhost   = getenv('DBHOST');
-                $this->dbport   = getenv('DBPORT');
+                $this->dbhost   = 'DBHOST';
+                $this->dbport   = 'DBPORT';
                 if(defined('ENVIRNOMENT') && ENVIRNOMENT == 'test'){
                 $this->dbname    = 'test_test_db';
                 }else {
-                $this->dbname    = getenv('DBNAME');
+                $this->dbname    = 'DBNAME';
                 }
-                $this->dbuser    = getenv('DBUSERNAME');
-                $this->dbpass   = getenv('DBPASSWD');
+                $this->dbuser    = 'DBUSERNAME';
+                $this->dbpass   = 'DBPASSWD';
                 $this->version = '3.3.2';
                 
                 $this->emailConfiguration = dirname(__FILE__).'/mailConf.php';

@@ -31,6 +31,9 @@ RUN cd /var/www/site/orangehrm-3.3.2; bash fix_permissions.sh
 
 # Set the configuration file with the correct environment settings
 ADD docker-build-files/Conf.php /var/www/site/orangehrm-3.3.2/lib/confs
+ADD docker-build-files/databases.yml /var/www/site/orangehrm-3.3.2/symfony/config
+# Add the init.sh to configure and start the server.
+ADD init.sh .
 
 # Update the default apache site with the config we created.
 ADD docker-build-files/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
@@ -39,4 +42,5 @@ ADD docker-build-files/apache-config.conf /etc/apache2/sites-enabled/000-default
 ADD docker-build-files/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Start apache/mysql
-CMD /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+#CMD /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+CMD ./init.sh

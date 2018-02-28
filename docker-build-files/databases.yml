@@ -1,0 +1,15 @@
+all:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn: 'mysql:host=DBHOST;port=DBPORT;dbname=DBNAME'
+      username: DBUSERNAME
+      password: DBPASSWD
+      attributes: { export: tables }
+test:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn: 'mysql:host=DBHOST;port=DBPORT;dbname=test_hrm'
+      username: DBUSERNAME
+      password: DBPASSWD 
