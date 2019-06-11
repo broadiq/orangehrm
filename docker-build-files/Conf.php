@@ -19,7 +19,7 @@ class Conf {
                 }
                 $this->dbuser    = 'DBUSERNAME';
                 $this->dbpass   = 'DBPASSWD';
-                $this->version = '3.3.2';
+                $this->version = '4.1.2';
                 
                 $this->emailConfiguration = dirname(__FILE__).'/mailConf.php';
                 $this->errorLog =  realpath(dirname(__FILE__).'/../logs/').'/';

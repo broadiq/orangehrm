@@ -26,16 +26,16 @@ EXPOSE 80
 #    unzip -o ~/orangehrm-3.3.2.zip -d /var/www/site && \
 #    rm ~/orangehrm-3.3.2.zip
     
-RUN wget -c http://downloads.sourceforge.net/project/orangehrm/stable/4.3.1/orangehrm-4.3.1.zip -O ~/orangehrm-4.3.1.zip &&\
-    unzip -o ~/orangehrm-4.3.1.zip -d /var/www/site && \
-    rm ~/orangehrm-4.3.1.zip
+RUN wget -c http://downloads.sourceforge.net/project/orangehrm/stable/4.1.2/orangehrm-4.1.2.zip -O ~/orangehrm-4.1.2.zip &&\
+    unzip -o ~/orangehrm-4.1.2.zip -d /var/www/site && \
+    rm ~/orangehrm-4.1.2.zip
 
 # Fix Permission
-RUN cd /var/www/site/orangehrm-4.3.1; bash fix_permissions.sh
+RUN cd /var/www/site/orangehrm-4.1.2; bash fix_permissions.sh
 
 # Set the configuration file with the correct environment settings
-ADD docker-build-files/Conf.php /var/www/site/orangehrm-4.3.1/lib/confs
-ADD docker-build-files/databases.yml /var/www/site/orangehrm-4.3.1/symfony/config
+ADD docker-build-files/Conf.php /var/www/site/orangehrm-4.1.2/lib/confs
+ADD docker-build-files/databases.yml /var/www/site/orangehrm-4.1.2/symfony/config
 # Add the init.sh to configure and start the server.
 ADD init.sh .
 
