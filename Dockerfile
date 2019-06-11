@@ -1,14 +1,32 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Orangehrm <samanthaj@orangehrm.com>
-
+ 
 RUN apt-get update
-RUN apt-get -y upgrade
+RUN apt-get -y install apt-utils
+RUN apt-get -y install locales
+ 
+# Set the locale
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+ 
+RUN apt-get -y install software-properties-common
+RUN apt-get update
+
+RUN apt-get -y install software-properties-common
+RUN add-apt-repository -y ppa:ondrej/php
+RUN apt-get update
+RUN apt-get install -y php5.6
+RUN apt-get install -y php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-xml php5.6-cli
+RUN php -v
+RUN apt-get -y install apache2 php-pear curl lynx-cur wget unzip supervisor openssh-server
 
 # Install apache, PHP, and supplimentary programs. curl and lynx-cur are for debugging the container.
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 mysql-server libapache2-mod-php5 php5-mysql php5-gd php-pear php-apc php5-curl curl lynx-cur wget unzip supervisor openssh-server
+#RUN DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 mysql-server libapache2-mod-php5 php5-mysql php5-gd php-pear php-apc php5-curl curl lynx-cur wget unzip supervisor openssh-server
 
 # Enable apache mods.
-RUN a2enmod php5
+#RUN a2enmod php5
 RUN a2enmod rewrite
 
 # Manually set up the apache environment variables
